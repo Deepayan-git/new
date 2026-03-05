@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="css/dash_style.css">
+</head>
+<body>
+
+<div class="navbar">
+  <h2>Company Portal</h2>
+  <div>
+    
+    <a href="manager_dashboard.html">Manager Dashboard</a>
+    <a href="employee_dashboard.html">Employee Dashboard</a>
+    <!-- <a href="/login.html">Logout</a> -->
+    <a href="/login.html" onclick="logout()">Logout</a>
+  </div>
+</div>
+
+<div class="dashboard-container">
+  <h1>Welcome Admin 👑</h1>
+  <p>You have full access to the system.</p>
+
+  <div class="card">
+    <h3>Total Managers</h3>
+    <p id="managerCount">0</p>
+    <ul id="managerList"></ul>
+  </div>
+
+  <div class="card">
+    <h3>Total Employees</h3>
+    <p id="employeeCount">0</p>
+    <ul id="employeeList"></ul>
+  </div>
+
+  <div class="card">
+    <h3>Manage Users</h3>
+    <p>Create, edit and delete users.</p>
+  </div>
+
+</div>
+
+<!-- <div class="dashboard-container">
+
+  <h1>Welcome Admin 👑</h1>
+  <p>You have full access to the system.</p>
+
+  <div class="card">
+    <h3>Manage Users</h3>
+    <p>Create, edit and delete users.</p>
+  </div>
+
+  <div class="card">
+    <h3>View Reports</h3>
+    <p>Check system reports and activity.</p>
+  </div>
+
+</div> -->
+
+
+<script>
+
+// Protect admin page
+// const role = localStorage.getItem("userRole");
+
+// if(role !== "admin"){
+//     alert("Access Denied");
+//     window.location.href = "/login.html";
+// }
+
+// Get users
+const users = JSON.parse(localStorage.getItem("users")) || [];
+
+let managers = users.filter(user => user.role === "manager");
+let employees = users.filter(user => user.role === "employee");
+
+// Show counts
+document.getElementById("managerCount").textContent = managers.length;
+document.getElementById("employeeCount").textContent = employees.length;
+
+// Show names
+const managerList = document.getElementById("managerList");
+const employeeList = document.getElementById("employeeList");
+
+managers.forEach(m => {
+   const li = document.createElement("li");
+   li.textContent = m.name + " (Active)";
+   managerList.appendChild(li);
+});
+
+employees.forEach(e => {
+   const li = document.createElement("li");
+   li.textContent = e.name + " (Active)";
+   employeeList.appendChild(li);
+});
+
+// Logout
+function logout(){
+  localStorage.removeItem("userRole");
+}
+
+const role = localStorage.getItem("userRole");
+    const page = window.location.pathname;
+
+    // Hide back button for manager on manager page
+    if (role === "manager" && page.includes("manager_dashboard.html")) {
+      document.getElementById("backBtn").style.display = "none";
+    }
+
+    // Hide back button for employee on employee page
+    if (role === "employee") {
+      document.getElementById("backBtn").style.display = "none";
+    }
+
+</script>
+
+<!-- <script>
+const role = localStorage.getItem("userRole");
+
+if(role !== "admin"){
+    alert("Access Denied");
+    window.location.href = "/login.html";
+}
+
+</script> -->
+
+</body>
+</html>
+
+

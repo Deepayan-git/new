@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Employee Dashboard</title>
+  <link rel="stylesheet" href="css/dash_style.css">
+</head>
+
+<body>
+
+  <div class="navbar">
+    <h2>Company Portal</h2>
+    <div>
+      <!-- <a href="/employee/dashboard">Dashboard</a> -->
+      <!-- <a href="/login.html">Logout</a> -->
+      <button id="backBtn" onclick="history.back()" style="padding:8px 15px; cursor:pointer;">
+        ⬅ Back
+      </button>
+      <a href="/login.html" onclick="logout()">Logout</a>
+    </div>
+  </div>
+
+  <div class="dashboard-container">
+    <h1>Welcome Employee 👨‍💼</h1>
+    <p>You can view your assigned tasks.</p>
+
+    <div class="card">
+      <h3>My Tasks</h3>
+      <p>Check tasks assigned to you.</p>
+    </div>
+
+    <div class="card">
+      <h3>Update Profile</h3>
+      <p>Edit your personal information.</p>
+    </div>
+
+  </div>
+
+  <!-- <script>
+
+const role = localStorage.getItem("userRole");
+
+if(role !== "employee"){
+    alert("Access Denied");
+    window.location.href = "/login.html";
+}
+
+</script> -->
+
+  <script>
+    const role = localStorage.getItem("userRole");
+    const page = window.location.pathname;
+
+  
+    // Hide back button for employee on employee page
+    if (role === "employee") {
+      document.getElementById("backBtn").style.display = "none";
+    }
+  </script>
+
+
+</body>
+
+</html>

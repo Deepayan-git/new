@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Manager Dashboard</title>
+  <link rel="stylesheet" href="css/dash_style.css">
+</head>
+
+<body>
+
+  <div class="navbar">
+    <h2>Company Portal</h2>
+    <div>
+      <button id="backBtn" onclick="history.back()" style="padding:8px 15px; cursor:pointer;">
+        ⬅ Back
+      </button>
+
+      <a href="employee_dashboard.html">Employee Dashboard</a>
+      <!-- <a href="/login.html">Logout</a> -->
+      <a href="/login.html" onclick="logout()">Logout</a>
+    </div>
+  </div>
+
+  <div class="dashboard-container">
+    <h1>Welcome Manager 📊</h1>
+    <p>You can manage team activities.</p>
+
+    <div class="card">
+      <h3>Team Overview</h3>
+      <p>View employee performance.</p>
+    </div>
+
+    <div class="card">
+      <h3>Assign Tasks</h3>
+      <p>Assign work to employees.</p>
+    </div>
+
+  </div>
+
+
+  <script>
+    const role = localStorage.getItem("userRole");
+    const page = window.location.pathname;
+
+    // Hide back button for manager on manager page
+    if (role === "manager" && page.includes("manager_dashboard.html")) {
+      document.getElementById("backBtn").style.display = "none";
+    }
+  </script>
+
+</body>
+
+</html>
