@@ -1,29 +1,4 @@
 
-// document.querySelector("form").addEventListener("submit", function(e){
-
-//   e.preventDefault();
-
-//   const role = document.querySelector("select[name='role']").value;
-
-//   // Save role in localStorage
-//   localStorage.setItem("userRole", role);
-
-//   // Redirect based on role
-//   if(role === "admin"){
-//       window.location.href = "admin_dashboard.html";
-//   }
-//   else if(role === "manager"){
-//       window.location.href = "manager_dashboard.html";
-//   }
-//   else if(role === "employee"){
-//       window.location.href = "employee_dashboard.html";
-//   }
-//   else{
-//       alert("Please select a role");
-//   }
-
-// });
-
 
 document.querySelector("form").addEventListener("submit", function(e){
 
@@ -63,8 +38,9 @@ document.querySelector("form").addEventListener("submit", function(e){
 // logout
 function logout(){
    localStorage.removeItem("userRole");
-   window.location.href = "/login.html";
+   window.location.href = "login.html";
 }
+
 
 
 
