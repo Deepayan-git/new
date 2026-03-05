@@ -37,9 +37,37 @@
     <h3>Manage Users</h3>
     <p>Create, edit and delete users.</p>
   </div>
+
 </div>
-  
+
+<!-- <div class="dashboard-container">
+
+  <h1>Welcome Admin 👑</h1>
+  <p>You have full access to the system.</p>
+
+  <div class="card">
+    <h3>Manage Users</h3>
+    <p>Create, edit and delete users.</p>
+  </div>
+
+  <div class="card">
+    <h3>View Reports</h3>
+    <p>Check system reports and activity.</p>
+  </div>
+
+</div> -->
+
+
 <script>
+
+// Protect admin page
+// const role = localStorage.getItem("userRole");
+
+// if(role !== "admin"){
+//     alert("Access Denied");
+//     window.location.href = "/login.html";
+// }
+
 // Get users
 const users = JSON.parse(localStorage.getItem("users")) || [];
 
@@ -86,11 +114,18 @@ const role = localStorage.getItem("userRole");
 
 </script>
 
+<!-- <script>
+const role = localStorage.getItem("userRole");
+
+if(role !== "admin"){
+    alert("Access Denied");
+    window.location.href = "/login.html";
+}
+
+</script> -->
+
 </body>
 </html>
-
-
-
 
 
 
